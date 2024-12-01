@@ -1,0 +1,140 @@
+we used
+mongoDb 
+Express
+React
+Nodejs
+Stripe
+shedCn ui -> iske liye aapka nodejs ka version 20.18.0 hona chaye aur npm ka 10.8.2
+/////////for state mngmnt
+Redux
+   . RTK query -> ye unnecessaery api call ko optimized krta hai , yaani ye ekbaar kisi cheez ko fetch kr lega to usko dobara fetch krne ke liye wapas api ko call nhai krega
+   RTK query : isme data fetching ka  logic bhaut powerfull hota hai , aur saath saath caching use krta hai yaani jese ki ek baar api call hoga sirf baar baar unnecessory api call nhai hogi 
+   RTK isi me hota hai npm install @reduxjs/toolkit
+
+//////////////////////////////
+npm create vite@latest
+npm install -D tailwindcss postcss autoprefixer   ==for installing tailwind css
+npx tailwindcss init -p
+
+
+npm install @reduxjs/toolkit
+npm install react-redux
+
+
+
+in index.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+in tailwind.config.js
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+
+fir client me jsconfig.json file create krke usme ye copy krde 
+{ 
+   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+  }
+
+
+fir vite.config.js me
+import path from "path"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})
+
+
+
+npx shadcn@latest init
+>   New York
+>   Slate
+
+? Would you like to use CSS variables for theming? » / yes
+
+
+// ab project create ho jayega aur tum ab shadsn ui ke componet ko use kr shakte ho , jese ki agr tume koi button add krna hai to phele usko install krna pdega like 
+npx shadcn@latest add button
+ye componets\ui me file ban jayegi button.jsx naam se , fir aap ise khai bhi simply use kr shakte ho
+import "./App.css";
+import { Button } from "./components/ui/button";
+
+function App() {
+  return (
+    <>
+      <Button>Let's build LMS : fire</Button>
+    </>
+  );
+}
+
+export default App;
+
+
+
+npm run dev
+
+fir app.jsx ko clear krlo 
+aur app.css ko bhi clear krdo
+
+npx shadcn@latest add tabs
+npx shadcn@latest add card
+npx shadcn@latest add input label
+npx shadcn@latest add sonner
+
+
+
+
+mongoDb
+bCD3UNlFlXAvazYO
+mohammedtousif047
+mongodb+srv://mohammedtousif047:bCD3UNlFlXAvazYO@cluster0.eauuc.mongodb.net/
+
+
+
+///////////////////////////backend ///////////////////////////
+ npm -y init   -y isliye taki vo baar baaar khuch puche na direct project create krdo 
+ npm i express mongoose cors dotenv bcryptjs jsonwebtoken nodemon
+ npm i cookie-parser
+
+ in index.js
+ import express from "express";
+
+const app = express();
+
+const PORT = 8080;
+
+app.listen(PORT, ()=>{
+    console.log(`server listen on port ${PORT}`);
+    
+})
+
+
+in package.json
+ "scripts": {
+    "dev":"nodemon index.js"
+  },
+
+
+  npm run dev
+
+
+

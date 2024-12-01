@@ -1,0 +1,118 @@
+git config --global user.name "name"
+git config --global user.email "emailEtest.com"
+git config --global core.editor "code --wait" //code means vsCode editor ka short name hai 
+git config --global core.autocrlf  // mac and windows me line ending alag alag tarike se dheki jaati hai //autocrlf se ye dono pr apne aap adjust kr dega 
+git config --global -e  //aap kabhi bhi value ko change kr shakte ho -e command ke saath 
+
+stages for like app.js ya route.js 
+U - untracked // yaani git is waqt aapki file ko manage nhai kar rha hai 
+A- added or staged //yaani ab git ko pta hai ki ye file hai 
+C - commited // ab git aapki file ko tracked kr rha hai ki bhai file me khuch nya to nhai likh diya hai aur purana wagera wagera 
+C - commited // new ab git aapki file ko tracked kr rha hai ki bhai file me khuch nya to nhai likh diya hai aur purana wagera wagera 
+
+
+commands you need to know 
+git status -s // to know current status of unstaged and staged files 
+git log --oneline // to know current status of saved points 
+git log --oneline --graph // ye ek graph se btata hai ki phele kha gya fir kha gya 
+git log btata hai saare commited histories  
+
+
+agr kisi file ko aapko tracked nhai karvana app chate ho ki vo ignored ho jaaye to  us file ke name  ko app simply  .gitignore file me likha de 
+
+
+
+////some more command 
+git reset --hard  HEAD~1// issee kiya hoga ki jo pichla data tha usko hta do 
+git reset --soft
+git reset --mixed
+
+git reset --hard  HEAD~1 // yaani ek commit piche chale jaao //isse apko ek commit piche wala code aajayega jo latest committed code tha wo hat jaayega aur agr code ke saath saath aapne koi new file bnai thi vo bhi hat jaayeagi 
+git reset --hard  HEAD~2 //ap chaye to 2 step piche bhi ja shakte hai 
+ 
+
+
+
+ git status -s 
+?? .gitignore
+?? client/ // ?? question mark ka mathlab hai ki yhe file untracked hai 
+
+
+
+
+ Remove-Item -Recurse -Force .git /// jo humne initialize repositery kiya tha usko wapas htane ke liye 
+
+
+
+/////////////////////////////branching 
+
+likes 
+ git branch feature/navbar // new branch create krne ke liye 
+
+
+ git branch //isse  aap wapas saari branches dhek shakte ho like
+  feature/navbar
+* main 
+
+* ka matlab hai ki hum is waqt main branch me hai 
+
+git switch feature/navbar // isse aap feature/navbar branch me chale jaaoge 
+
+ab agr aap ne feature/navbar me khuch changes krke commit krdiya aur main me wapas switch kr liya to jo feature/navbar me jo new add kiya to vo ab main me nhai dhikega main me sirf vo purana wala main ka code dhikega , aur agr wapas feature/navbar me switch krte hai to wapas app feature/navbar me jo new add kiya tha vo dhikne lag jaayega 
+
+
+////////merging ///ab hum chate hai ki jo hmara feature/navbar ka code hai usko main branch me merge krdo 
+merge krne ke liye subse phele aapko main branch me rhena jaroori hai 
+git merge feature/navbar // appko merge krna hai feature/navbar branch ko to aap ye  likhenge 
+
+// three way merge 
+//ab agr main me bhi line 3 and 4 pr khuch commit krdiya aur feature/navbar me bhi line 3 and 4 pr khuch commit krdiya  to ab inko merge krenge  to conflict of intrest aayega isme puchega ki aapko kona rhakna hai main ka ya feature/navbar ka ya fir dono ka , aur isko three way merge khete hai 
+//manlo ek file hai jiska number-1 fir hum ek copy(yaani branch bna kr) lete hai number-1 fir usme khuch changes krke file number-2 bna dete hai , aur hum number-1 file me bhi khuch changes krke number-3 file bna dete hai, ab agr hum number-1(orignal) file aur number-2 aur number-3 ka use krke merge krte hai to isko bolte hai three way merge 
+
+
+//fast forword merge 
+fast forword merge hum basically merge nhai krte balki head ko joki starting me orginal file pr hota hai fir usko hum jo final changes wali file hoti hai uspr lga dete head ko 
+manlo ki n-1 joki orignal(main branch) file hai ab uski ek copy bani aur usme khuch changes krke n-2 file bnali ab  hum head ko orignal file se n-2 file pr le aate hai jisse ab ab n-2 file ek trha se merge file ban jaati hai , head location tehe krta hai ki hum is waqt kha hai 
+
+
+
+//ab branch ko delete kese krte hai 
+//ab jub humne feature/navbar branch ko merge krli hai to ab us branch ka koi kaam bcha nhai, to hum usko delete kr dete hai 
+git branch -d feature/navbar
+
+
+// git switch -c feature/add-footer // isse kiya hoga ki aap ek branch bna kr usme direct switch bi ho jaaoge 
+
+ 
+
+
+/// stashing
+jab aap kisi branch mein kaam kr rhae ho and aapne khuch code likha hai and aapne us code ko commit nhai kiya hai , aur aap doosri branch me jaane ki koshis krte ho to git aapko bolta hai ki bhai saved nhai changes delete ho jaayenge hum chaaye to un changes ko delete hone de yaa fir un changes ko draft kr shakte hai , jab bhi draft kareneg to wo changes naa hi delete honge naa hi add honge but beech me khai dale rahenge fir aap us branch me jab waapas aaye to wo changes waapas se apply kr shakte ho 
+
+jese hi aap switch kroge iss command se-> git switch  feature/add-footer , to aapko ek waring dega stashing ke liye to aapko ye command chalani hai -> git stash fir wapas se swicth ke liye command run krni hai aap dusri branch me chale jaaoge 
+
+aur jab aap us branch me jha pr aapne draft ko save kiya tha agr vo draffts apko wapas chaye to ye command chale -> git stash apply
+
+aur age aapne un drafts ko drafts me se delete krna chate ho to -> git stash clear
+
+
+
+///////////////////////////////////////collaboration////////// video 4 sheriyaans coding /////////////////////////////////
+ yaani aap chate ho ki bhai me chaar log ke saath kaam bhi kr paau same code base pe usko hum collaboration khete hai. 
+              //////coomon steps for collaboration.///
+          main banda folder and project/files bnaayega/initialize krega 
+          abb usse github pr daal dega 
+          fir main banda dusre collaborator/teams mates ko add krega 
+
+          fir saare collaborator bande us repo se cloning krenge , aur apni ek branch bna kr apna code usi branch me likhe main(orignal) file me direct code kabhi nhai likhe branch craete krke usme likhe, aur fir  complete hone pr commit krde aur github pr upload krde fir inform kre team mate ko about the commit fir merger(main banda) fetch krega aur check krega ki aapka code shai hai ki nhai aur fir merge krega and re-push kr dega github pr 
+
+
+
+///for push code into github repositry 
+echo "# rtk_test" >> README.md
+git init  // iss command se vohi hoga jo hum git logo me jakr ke initialize repositery krte the vo same kaam hi hoga isse bhi 
+git add README.md  // iski jgha aap git add . kriye taaki saari file add ho jaaye 
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/mtousif041/rtk_test.git
+git push -u origin main

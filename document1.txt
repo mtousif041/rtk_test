@@ -1,0 +1,7 @@
+first line in documnet1
+second line in documnet1
+third line in documnet1 feature/navbar
+4th line in documnet1 
+5th line in documnet1 
+4th line in documnet1 feature/navbar
+5th line in documnet1 feature/navbar
